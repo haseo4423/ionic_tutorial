@@ -14,4 +14,11 @@ export class HelloIonicPage {
   constructor() {
 
   }
+
+  addTask() {
+    this.tasks.push({
+      name: this.task
+    });
+    this.task = "";
+  }
 }
