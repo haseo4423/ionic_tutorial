@@ -10,19 +10,18 @@
 
 <ion-content padding>
 
-  <form padding>
+  <form padding (submit)="addTask()" #f="ngForm">
     <ion-list>
       <ion-item>
         <ion-label floating>タスク</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" [(ngModel)]="task" name="task" required minlength="3" maxlength="20"></ion-input>
       </ion-item>
     </ion-list>
-    <button type="submit" ion-button block>追加</button>
+    <button type="submit" ion-button block [disabled]="!f.form.valid">追加</button>
   </form>
 
   <ion-list>
-    <ion-item>タスク１</ion-item>
-    <ion-item>タスク２</ion-item>
+    <ion-item *ngFor="let t of tasks">{{t.name}}</ion-item>
   </ion-list>
 
 </ion-content>
